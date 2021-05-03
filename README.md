@@ -85,3 +85,5 @@ DIRECTORY STRUCTURE
 В /config/web.php в $urlManager в 'rules' задаем значение с помощью регулярных выражений.
 
 В PostController.php в $pages параметрам $forcePageParam и  $ pageSizeParam задаем значение false.
+
+Дамп базы находится в файле yii2mini.sql
