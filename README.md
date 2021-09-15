@@ -4,86 +4,60 @@
     <br>
 </p>
 
-DIRECTORY STRUCTURE
--------------------
+Перенес сторонний шаблон в структуру фреймворка (верстку, стили, шрифты и скрипты)
 
-      assets/             contains assets definition
-      commands/           contains console commands (controllers)
-      config/             contains application configurations
-      controllers/        contains Web controller classes
-      mail/               contains view files for e-mails
-      models/             contains model classes
-      runtime/            contains files generated during runtime
-      tests/              contains various tests for the basic application
-      vendor/             contains dependent 3rd-party packages
-      views/              contains view files for the Web application
-      web/                contains the entry script and Web resources
+Создал свой шаблон /views/layouts/blog.php И переопределил шаблон по умолчанию в /config/web.php в массиве $config
 
-Установили фреймворк Yii2 с помощью Composer.
+В шаблоне /views/layouts/blog.php в head взял ссылки на ресурсы
 
-Создали базу данных в MySQL и две связанные таблицы при помощи PHPMyAdmin.
+Подключил и зарегистрировал комплект ресурсов в /asset/AppAsset.php
 
-Перенесли шаблон папку /web (верстку, стили, шрифты и скрипты) в структуру фреймворка.
+Добавил в /views/layouts/blog.php методы-маркеры открывающие, закрывающие и добавляющие стили и скрипты
 
-Создали свой шаблон /views/layouts/blog.php И переопределили шаблон по умолчанию в /config/web.php в массиве $config.
+Использовал встроенный класс Yii в /views/layouts/blog.php, чтобы задать кодировку, локализацию и title
 
-В шаблоне /views/layouts/blog.php в head взяли ссылки на ресурсы.
+Значения для всего этого прописал в массиве $config в /config/web.php
 
-Подключили и зарегистрировали комплект ресурсов в /asset/AppAsset.php.
+Создал PostController.php
 
-Добавили в /views/layouts/blog.php методы-маркеры открывающие, 
-закрывающие и добавляющие стили и скрипты.
+В /config/web.php в массиве $config переопределил дефолтный маршрут для главной страницы приложения на /views/post/index.php
 
-Использовали встроенный класс Yii в /views/layouts/blog.php,
-чтобы задать кодировку, локализацию и title.
+Создал модель Post.php
 
-Значения для всего этого прописали в массиве $config в /config/web.php.
+При помощи метода find() получили данные из таблицы
 
-Сделали новый вид /views/post/index.php И добавили в него содержимое body из blog.php.
+В PostController.php получил данные из модели Post.php и передал их в /views/post/index.php
 
-Создали PostController.php.
-
-В /config/web.php в массиве $config переопределили дефолтный маршрут 
-для главной страницы приложения на /views/post/index.php
-
-Создали модель Post.php
-
-При помощи метода find() получили данные из таблицы.
-
-В PostController.php получили данные из модели Post.php и передали их в /views/post/index.php.
-
-Настроили подключение к базе данных в /config/db.php.
+Настроил подключение к базе данных в /config/db.php
 
 <b>Вывод и форматирование данных:</b>
 
-Использовали специальный хелпер \yii\helpers\Html и его методы. В том числе и для вывода изображений.
+Использовал специальный хелпер \yii\helpers\Html и его методы. В том числе и для вывода изображений
 
-Есть алиас @web он ведет в папку /web.
+Есть алиас @web он ведет в папку /web
 
-Для формирования ссылок есть компонент $urlMeneger и 
-используется класс хелпер \yii\helpers\url и метод to().
+Для формирования ссылок использовал компонент $urlMeneger и класс хелпер \yii\helpers\url и метод to()
 
-Для вывода категорий создали модель Category.php и 
-связали с моделью Post.php при помощи метода getCategory() и связи hasOne().
+Для вывода категорий создал модель Category.php и связал с моделью Post.php при помощи метода getCategory() и связи hasOne()
 
-Указываем форматирование даты в /config/web.php в массиве $formatter.
+Указал форматирование даты в /config/web.php в массиве $formatter
 
-И с помощью yii::$app->formatter выводим дату в виде views/post/index.php.
+И с помощью yii::$app->formatter вывел дату в виде views/post/index.php
 
 <b>Постраничная разбивка:</b>
 
-Постраничную навигацию выводим при помощи виджета LinkPager.
+Постраничную навигацию вывел при помощи виджета LinkPager
 
-Подсчет и количество постов на странице делаем в PostController.php при помощи обьекта класса Pagination.
+Подсчет и количество постов на странице сделал в PostController.php при помощи обьекта класса Pagination
 
 <b>Создание ЧПУ:</b>
 
-Убираем из адреса папку web, файл index.php. Для этого создаем файл .htaccess в корне сайта.
+Убирал из адреса папку web, файл index.php. Для этого создал файл .htaccess в корне сайта
 
-В /config/web.php раскомментируем $urlManager; в 'request' задаем значение 'baseUrl' пустую строку.
+В /config/web.php раскомментировал $urlManager; в 'request' задал значение 'baseUrl' пустую строку
 
-В /config/web.php в $urlManager в 'rules' задаем значение с помощью регулярных выражений.
+В /config/web.php в $urlManager в 'rules' задал значение с помощью регулярных выражений
 
-В PostController.php в $pages параметрам $forcePageParam и  $ pageSizeParam задаем значение false.
+В PostController.php в $pages параметрам $forcePageParam и  $ pageSizeParam задал значение false
 
 Дамп базы находится в файле yii2mini.sql
