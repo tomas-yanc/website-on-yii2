@@ -1,5 +1,4 @@
 <p align="center"><img src="https://avatars0.githubusercontent.com/u/993323" height="100px"></p>
-<h2 align="center">Yii 2 framework</h2>
 
 Перенес сторонний шаблон в структуру фреймворка (верстку, стили, шрифты и скрипты)
 
