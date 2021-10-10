@@ -1,8 +1,6 @@
-<p align="center">
-        <img src="https://avatars0.githubusercontent.com/u/993323" height="100px">
-    <h1 align="center">Yii 2 framework</h1>
-    <br>
-</p>
+<p align="center"><img src="https://avatars0.githubusercontent.com/u/993323" height="100px"></p>
+<h1 align="center">Yii 2 framework</h1>
+
 Перенес сторонний шаблон в структуру фреймворка (верстку, стили, шрифты и скрипты)
 
 Создал свой шаблон /views/layouts/blog.php И переопределил шаблон по умолчанию в /config/web.php в массиве $config
